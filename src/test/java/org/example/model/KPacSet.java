@@ -18,6 +18,7 @@ public class KPacSet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 250)
-    private Character title;
-    private Set<KPac> kPacs;
+    private String title;
+    @ManyToMany(mappedBy = "kPacSetList")
+    private Set<KPac> kPacList;
 }

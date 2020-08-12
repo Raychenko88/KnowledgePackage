@@ -7,6 +7,9 @@ import org.example.service.KPacService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Service
 public class KPacServiceImpl implements KPacService {
 
@@ -35,11 +38,22 @@ public class KPacServiceImpl implements KPacService {
     }
 
     @Override
-    public KPac findAll() throws Exception {
+    public List<KPac> findAll() throws Exception {
         if (kPacDAO.findAll().isEmpty()){
             throw new Exception("no kPacs found");
         }
         return kPacDAO.findAll();
+    }
+
+    @Override
+    public List<KPac> findAllByIdKPacSet(Integer id) throws Exception {
+        List<KPac> list = kPacDAO.findAllByIdKPacSet(id);
+        if (list.isEmpty()){
+            throw new Exception("no kPacs found");
+        }
+        list.sort(Comparator
+                .comparing(KPac::getId));
+        return list;
     }
 
     @Override

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -18,8 +19,14 @@ public class KPac {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 250)
-    private Character title;
+    private String title;
     @Column(length = 20000)
-    private Character description;
+    private String description;
     private LocalDate time;
+    @ManyToMany
+    @JoinTable(
+            name = "key_table_id",
+            joinColumns = @JoinColumn(name = "kpac_id"),
+            inverseJoinColumns = @JoinColumn(name = "kpacset_id"))
+    private Set<KPacSet> kPacSetList;
 }
