@@ -45,6 +45,7 @@ public class KPacServiceImpl implements KPacService {
         return kPacDAO.findAll();
     }
 
+    // ищет и фильтрует все kPacs по id PacSet и сортирует по kPacs id
     @Override
     public List<KPac> findAllByIdKPacSet(Integer id) throws Exception {
         List<KPac> list = kPacDAO.findAllByIdKPacSet(id);
@@ -55,6 +56,8 @@ public class KPacServiceImpl implements KPacService {
                 .comparing(KPac::getId));
         return list;
     }
+
+
 
     @Override
     public void delete(KPac kPac) {

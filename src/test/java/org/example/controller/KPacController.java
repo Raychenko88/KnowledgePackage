@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("kpacs")
 public class KPacController {
@@ -25,6 +27,27 @@ public class KPacController {
         }
     }
 
+//    @DeleteMapping(path = "/{id}")
+//    public ResponseEntity delete(@PathVariable Integer id) {
+//        try {
+//            KPac kPac = kPacService.findById(id);
+//            kPacService.delete(kPac);
+//            return new ResponseEntity(HttpStatus.OK);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+//        }
+//    }
+
+    @GetMapping(path = "find-all-by-id-kpac-set")
+    public ResponseEntity<List> findAllByIdKPacSet(@RequestParam Integer id) {
+        try {
+            return new ResponseEntity<>(kPacService.findAllByIdKPacSet(id), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
     @DeleteMapping(path = "/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
         try {
@@ -36,6 +59,4 @@ public class KPacController {
             return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }
     }
-
-
 }

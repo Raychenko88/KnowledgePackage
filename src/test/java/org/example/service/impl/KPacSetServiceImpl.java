@@ -42,6 +42,7 @@ public class KPacSetServiceImpl implements KPacSetService {
         return kPacSetDAO.findById(id).orElseThrow(() -> new Exception("kPacSet not found"));
     }
 
+    // находит все kPacSet и сортирует их по id
     @Override
     public List<KPacSet> findAll() throws Exception {
         List<KPacSet> list = kPacSetDAO.findAll();
@@ -53,6 +54,7 @@ public class KPacSetServiceImpl implements KPacSetService {
         return list;
     }
 
+    // ищет и фильтрует все kPacs по id PacSet и сортирует по kPacs id
     @Override
     public List<KPac> findAllByIdKPacSet(Integer id) throws Exception {
         return kPacService.findAllByIdKPacSet(id);
