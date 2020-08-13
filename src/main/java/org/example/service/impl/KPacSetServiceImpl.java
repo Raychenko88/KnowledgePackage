@@ -23,7 +23,7 @@ public class KPacSetServiceImpl implements KPacSetService {
 
     @Override
     public KPacSet save(KPacSet kPacSet) throws Exception {
-        if (kPacSet.getId() != null){
+        if (kPacSet.getId() != null) {
             throw new Exception("kPacSet already exists");
         }
         return kPacSetDAO.save(kPacSet);
@@ -31,7 +31,7 @@ public class KPacSetServiceImpl implements KPacSetService {
 
     @Override
     public KPacSet update(KPacSet kPacSet) throws Exception {
-        if (kPacSet.getId() == null){
+        if (kPacSet.getId() == null) {
             throw new Exception("kPacSet id not found");
         }
         return kPacSetDAO.save(kPacSet);
@@ -46,7 +46,7 @@ public class KPacSetServiceImpl implements KPacSetService {
     @Override
     public List<KPacSet> findAll() throws Exception {
         List<KPacSet> list = kPacSetDAO.findAll();
-        if (list.isEmpty()){
+        if (list.isEmpty()) {
             throw new Exception("no kPacSets found");
         }
         list.sort(Comparator

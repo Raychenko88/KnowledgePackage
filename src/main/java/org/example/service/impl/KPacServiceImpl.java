@@ -17,7 +17,7 @@ public class KPacServiceImpl implements KPacService {
 
     @Override
     public KPac save(KPac kPac) throws Exception {
-        if (kPac.getId() != null){
+        if (kPac.getId() != null) {
             throw new Exception("kPac already exists");
         }
         return kPacDAO.save(kPac);
@@ -25,7 +25,7 @@ public class KPacServiceImpl implements KPacService {
 
     @Override
     public KPac update(KPac kPac) throws Exception {
-        if (kPac.getId() == null){
+        if (kPac.getId() == null) {
             throw new Exception("kPac id not found");
         }
         return kPacDAO.save(kPac);
@@ -38,7 +38,7 @@ public class KPacServiceImpl implements KPacService {
 
     @Override
     public List<KPac> findAll() throws Exception {
-        if (kPacDAO.findAll().isEmpty()){
+        if (kPacDAO.findAll().isEmpty()) {
             throw new Exception("no kPacs found");
         }
         return kPacDAO.findAll();
@@ -48,14 +48,13 @@ public class KPacServiceImpl implements KPacService {
     @Override
     public List<KPac> findAllByIdKPacSet(Integer id) throws Exception {
         List<KPac> list = kPacDAO.findAllByIdKPacSet(id);
-        if (list.isEmpty()){
+        if (list.isEmpty()) {
             throw new Exception("no kPacs found");
         }
         list.sort(Comparator
                 .comparing(KPac::getId));
         return list;
     }
-
 
 
     @Override
