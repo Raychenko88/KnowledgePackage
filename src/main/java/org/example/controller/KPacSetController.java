@@ -1,7 +1,6 @@
 package org.example.controller;
 
 
-import org.example.model.KPac;
 import org.example.model.KPacSet;
 import org.example.service.KPacSetService;
 import org.springframework.beans.factory.annotation.Autowired;
